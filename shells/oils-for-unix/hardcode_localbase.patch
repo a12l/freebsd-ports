@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 14a1878..f9cbf85 100755
+--- a/configure
++++ b/configure
+@@ -226,7 +226,7 @@ detect_readline() {
+   fi
+ 
+   # Detect in default location
+-  if cc_quiet build/detect-readline.c -l readline; then
++  if cc_quiet build/detect-readline.c -L /usr/local/lib -lreadline; then
+     have_readline=1
+     return
+   fi

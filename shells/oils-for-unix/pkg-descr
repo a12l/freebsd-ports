@@ -1,0 +1,6 @@
+Oils is a new Unix shell that runs in two modes. OSH runs POSIX shell and bash
+scripts -- it's the most bash-compatible shell by a mile. YSH is for Python and
+JavaScript users who avoid shell. It has real data structures and JSON.
+
+Upgrade to OSH from YSH with shopt --set ysh:upgrade. And catch errors in your
+existing shell scripts with shopt --set strict:all.
