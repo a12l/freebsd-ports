@@ -1,5 +1,5 @@
 PORTNAME=	oils-for-unix
-DISTVERSION=	0.21.0
+DISTVERSION=	0.23.0
 CATEGORIES=	shells
 MASTER_SITES=	https://www.oilshell.org/download/
 
@@ -18,13 +18,17 @@ OPTIONS_DEFINE=			INTERACTIVE
 OPTIONS_DEFAULT=		INTERACTIVE
 
 INTERACTIVE_DESC=		Include Oils CLI
-INTERACTIVE_USES=		readline
-INTERACTIVE_CONFIGURE_WITH=	readline
-INTERACTIVE_CONFIGURE_ARGS=	--readline=${LOCALBASE}
   
 BUILD_DEPENDS=	bash:shells/bash
 
 PLIST_FILES=	bin/osh \
 		bin/ysh
+
+do-build:
+	@cd ${WRKSRC}/ && ${SETENV} -i ${MAKE_ENV} ${SH} bin/package flat make
+	cd ${WRKSRC}/_build/oils.sh
+
+do-install:
+	./install
 
 .include <bsd.port.mk>
